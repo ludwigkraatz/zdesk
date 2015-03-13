@@ -148,8 +148,8 @@ class Zendesk(ZendeskAPI):
         if self.zdesk_email and self.zdesk_password:
             auth = base64.b64encode(self.zdesk_email.encode('ascii') + b':' +
                              self.zdesk_password.encode('ascii'))
-            self.headers["Authorization"] = "Basic {}".format(
-                                                        auth.decode('ascii'))
+            self.headers["Authorization"] = "Basic {auth}".format(
+                                                        auth=auth.decode('ascii'))
         elif "Authorization" in self.headers:
             del(self.headers["Authorization"])
 
